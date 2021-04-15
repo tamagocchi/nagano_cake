@@ -45,6 +45,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.timestamp :created_at
       t.timestamp :updated_at
 
+      t.string :name
       t.timestamps null: false
     end
 
