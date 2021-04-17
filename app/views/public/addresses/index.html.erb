@@ -1,0 +1,40 @@
+
+<div class="container px-5 px-sm-0">
+
+  <div class="row">
+      <h3>配送先登録/⼀覧</h3>
+      <div class="delivery_new">
+        <%= form_with model: @address, local:true do |f| %>
+            <h4>郵便番号（ハイフンなし）</h4>
+              <%= f.text_field :postcode, :class => "form-control", placeholder: "0000000" %>
+            <h4>住所</h4>
+              <%= f.text_field :destination, placeholder: "東京都渋⾕区代々⽊神園町0-0", :size =>"60*60" %>
+            <h4>宛名</h4>
+              <%= f.text_field :delivery_name, placeholder: "令和道⼦" %>
+            <input type="submit" class='btn btn-success' value='新規登録'>
+        <% end %>
+
+         <table class="table table-bordered">
+          <thead class="thead-light">
+              <tr>
+                <th>郵便番号</th>
+                <th>住所</th>
+                <th>宛名</th>
+                <th></th>
+              </tr>
+          </thead>
+            <% @addresses.each do |address| %>
+                <tbody>
+                  <tr>
+                    <td><%= address.postcode %></td>
+                    <td><%= address.destination %></td>
+                    <td><%= address.delivery_name %></td>
+                    <td><%= link_to '編集する', edit_address_path(address.id), class: 'btn btn-sm btn-success' %>
+                    <%= link_to '削除する', address_path(address.id), method: :delete, class: 'btn btn-sm btn-danger destroy_book_22227' %></td>
+                  </tr>
+                </tbody>
+            <% end %>
+         </table>
+       </div>
+     </div>
+   </div>
