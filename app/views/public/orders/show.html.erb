@@ -1,0 +1,46 @@
+
+<div class="container">
+  
+　<div class="row">
+ 　 <div class="col-md-6 offset-md-1">
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">注⽂履歴詳細</h5>
+   </div>
+  </div>
+
+<h6>注文情報</h6>
+  <table class="table table-bordered">
+    <% @order.each do |order| %>
+     <tbody>
+        <tr><th>注文日</th><td><%= order.created_at %></td></tr>
+        <tr><th>配送先</th><td><%= order.destination %></td></tr>
+        <tr><th>支払い方法</th><td><%= order.total_price %></td></tr>
+        <tr><th>ステータス</th><td><%= order.status %></td></tr>
+     </tbody>
+    <% end %>
+  </table>
+
+  <h6>請求情報</h6>
+  <table class="table table-bordered">
+    <% @order.each do |order| %>
+     <tbody>
+        <tr><th>商品合計</th><td><%= order.created_at %></td></tr>
+        <tr><th>配送料</th><td><%= order.destination %></td></tr>
+        <tr><th>ご請求金額</th><td><%= order.total_price %></td></tr>
+     </tbody>
+    <% end %>
+  </table>
+
+  <table class="table table-bordered">
+    <% @order.each do |order| %>
+      <thead>
+         <tr>
+          <th>商品</th>
+          <th>単価（税込み）</th>
+          <th>個数</th>
+          <th>小計</th>
+         </tr>
+      </thead>
+     <% end %>
+  </table>
+  
+</div>

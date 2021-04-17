@@ -1,0 +1,51 @@
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6 offset-md-1">
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">注⽂情報確認</h5>
+   </div>
+
+<table class="order_confirm">
+        <thead>
+            <tr>
+                <th>商品名</th>
+                <th>単価（税込み）</th>
+                <th>数量</th>
+                <th>小計</th>
+            </tr>
+        </thead>
+    <% @order.each do |order| %>
+        <tbody>
+            <tr>
+              <td><%= order.name %></td>
+              <td><%= order.price %>></td>
+              <td><%= order.product_quantity %></td>
+              <td><%= order.total_price %></td>
+            </tr>
+        </tbody>
+    <% end %>
+</table>
+
+ <table class="table table-bordered">
+    <% @order.each do |order| %>
+     <tbody>
+        <tr><th>送料</th><td><%= order.shipping_fee %></td></tr>
+        <tr><th>商品合計</th><td><%= order.destination %></td></tr>
+        <tr><th>請求金額</th><td><%= order.total_price %></td></tr>
+     </tbody>
+    <% end %>
+  </table>
+  
+  
+  <h3>支払い方法</h3>
+  
+  <h3>お届け先</h3>
+  
+  <div class="text-center">
+    <h3 class="mt-5 mb-2">
+      <input type="submit" class='btn btn-success' value='注文を確定する'>
+      </h3>
+  </div>
+
+</div>
