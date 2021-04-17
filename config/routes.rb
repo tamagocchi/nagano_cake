@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
 
     resources :products, only: [:index, :show]
-    resources :adresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :addresess, only: [:index, :create, :edit, :update, :destroy]
 
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
