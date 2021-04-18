@@ -1,60 +1,83 @@
-  <!----------- ショッピングカートの内容------------->
-  
 <div class="container">
 
   <div class="row">
-    <div class="col-md-6 offset-md-1">
-      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">ショッピングカート</h5>
+    <div class="col-md-6">
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5 mb-4">ショッピングカート</h5>
+    </div>
+
+    <div class="col-md-2 ml-4 mt-5 py-1">
+      <%= link_to 'カートを空にする', cart_products_destroy_all_path, class: 'btn btn-sm btn-danger', method: :delete %>
     </div>
   </div>
 
- <div class="row">
-  <div class="col-md-8 pl-5">
-    <table class="table">
-      <thead class="thead-light">
-        <tr>
-          <th class="text-left">商品名</th>
-          <th class="text-left">単価(税込)</th>
-          <th class="text-left">数量</th>
-          <th class="text-left">小計</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @cart_products.each do |cart_prodcut| %>
-        <tr>
-          <td>
-            <p><%= cart_product.name %></p>
-          </td>
-          <td>
-            <p><%= cart_product.price %></p>
-          </td>
-          <td>
-            <div class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-quantity">
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-              </ul>
-            </div>
-            <div>
-              <%= link_to '変更', cart_product_path(cart_product.product_quantity), class: 'btn btn-sm btn-success' %>
-            </div>
-          </td>
-          <td>
-            <p><%= cart_product.price * cart_product.product_quantity %></p>
-          </td>
-          <td>
-            <div>
-              <%= link_to '削除する', destroy_cart_product_path(cart_product.id), class: 'btn btn-sm btn-danger', method: :delete %>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-     </tbody>
-    </table>
+  <!----------- ショッピングカートの内容------------->
+  <div class="row">
+    <div class="col-md-8 pl-5">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th class="text-left">商品名</th>
+            <th class="text-left">単価(税込)</th>
+            <th class="text-left">数量</th>
+            <th class="text-left">小計</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @sum = 0 %>
+        <% @cart_products.each do |cart_product| %>
+          <tr>
+            <td>
+              <p><%= Product.find(cart_product.product_id).name %></p>
+            </td>
+            <td>
+              <p><%= Product.find(cart_product.product_id).price %></p>
+            </td>
+            <td>
+            <%= form_with model: cart_product, method: :patch, local:true do |f| %>
+              <%= f.select :product_quantity, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"]] %>
+              <%= f.hidden_field :id, :value => cart_product.id %>
+              <%= f.submit '変更', class:"btn btn-sm btn-success ml-5" %>
+            <% end %>
+            </td>
+            <td>
+              <p><%= @sub_total=Product.find(cart_product.product_id).price * cart_product.product_quantity %></p>
+            </td>
+            <td>
+              <div>
+                <%= link_to '削除する', destroy_cart_product_path(cart_product.id), class: 'btn btn-sm btn-danger', method: :delete %>
+              </div>
+            </td>
+          </tr>
+          <% @sum += @sub_total %>
+        <% end %>
+       </tbody>
+      </table>
+    </div>
   </div>
- </div>
+
+  <!----------- 合計金額 ------------->
+  <div class="row">
+    <div class="col-md-2 offset-md-1 mt-3">
+      <%= link_to '買い物を続ける', root_path, class: 'btn btn-sm btn-primary' %>
+    </div>
+
+    <div class="col-md-3 pl-5 offset-md-2 mb-2">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="align-middle p-2"><p class="font-weight-bold mb-0">合計金額</p></td>
+            <td class="align-middle p-2"><p class="font-weight-bold mb-0"><%= @sum %></p></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 offset-md-3 mt-5">
+      <%= link_to '情報入力に進む', new_order_path, class: 'btn btn-sm btn-success' %>
+    </div>
+  </div>
+
 </div>

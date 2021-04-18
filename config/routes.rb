@@ -9,14 +9,14 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
 
     resources :products, only: [:index, :show]
-    resources :addresess, only: [:index, :create, :edit, :update, :destroy]
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
 
     resources :orders, only: [:index, :show, :create, :new]
 
-    resources :cart_products, only: [:index, :create, :update, :destroy]
+    resources :cart_products, only: [:index, :create, :update]
     delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
     delete 'cart_products/:id' => 'cart_products#destroy', as: 'destroy_cart_product'
 
