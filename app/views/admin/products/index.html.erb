@@ -1,0 +1,39 @@
+  <!----------- 管理者：商品一覧画面------------->
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6 offset-md-1">
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">商品一覧</h5>
+    </div>
+  </div>
+
+ <div class="row">
+  <div class="col-md-8 pl-5">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th class="text-left">商品ID</th>
+          <th class="text-left">商品名</th>
+          <th class="text-left">税込価格</th>
+          <th class="text-left">ジャンル</th>
+          <th class="text-left">ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><a href="products/:id"><%= product.name %></a></td>
+          <td><%= product.price %></td>
+          <td><%= product.genre_id %></td>
+          <td><%= product.is_active_i18n %></td>
+        </tr>
+      <% end %>
+     </tbody>
+    </table>
+  </div>
+ </div>
+
+</div>

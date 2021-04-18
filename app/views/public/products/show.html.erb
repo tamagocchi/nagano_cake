@@ -1,0 +1,21 @@
+  <!----------- 顧客：商品詳細画面------------->
+
+ <%= attachment_image_tag @product, :image, :fill, 100, 100, format: 'jpeg' %>
+ <h1><%= @product.name %></h1>
+ <p><%= @product.introduction %></p>
+ <p class="font-weight-strong">￥<%= @product.price %> (税込)</p>
+  <div class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+    <ul class="dropdown-quantity">
+      <li><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+    </ul>
+  </div>
+
+ <%= form_with model: @add_cart, local: true do |f| %>
+   <%= f.submit 'カートに入れる', class:"btn btn-sm btn-success ml-5" %>
+   <%= f.hidden_field :customer_id, :value => current_customer %>
+   <%= f.hidden_field :product_id, :value => @product.id %>
+ <% end %>

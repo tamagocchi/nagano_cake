@@ -1,0 +1,60 @@
+  <!----------- ショッピングカートの内容------------->
+  
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6 offset-md-1">
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">ショッピングカート</h5>
+    </div>
+  </div>
+
+ <div class="row">
+  <div class="col-md-8 pl-5">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th class="text-left">商品名</th>
+          <th class="text-left">単価(税込)</th>
+          <th class="text-left">数量</th>
+          <th class="text-left">小計</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @cart_products.each do |cart_prodcut| %>
+        <tr>
+          <td>
+            <p><%= cart_product.name %></p>
+          </td>
+          <td>
+            <p><%= cart_product.price %></p>
+          </td>
+          <td>
+            <div class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-quantity">
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+              </ul>
+            </div>
+            <div>
+              <%= link_to '変更', cart_product_path(cart_product.product_quantity), class: 'btn btn-sm btn-success' %>
+            </div>
+          </td>
+          <td>
+            <p><%= cart_product.price * cart_product.product_quantity %></p>
+          </td>
+          <td>
+            <div>
+              <%= link_to '削除する', destroy_cart_product_path(cart_product.id), class: 'btn btn-sm btn-danger', method: :delete %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+     </tbody>
+    </table>
+  </div>
+ </div>
+</div>

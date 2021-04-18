@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
     resources :cart_products, only: [:index, :create, :update, :destroy]
     delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
+    delete 'cart_products/:id' => 'cart_products#destroy', as: 'destroy_cart_product'
 
     resource :customers, only: [:edit, :update]
     get 'customers/my_page' => 'customers#show', as: 'show'
