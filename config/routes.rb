@@ -9,11 +9,12 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
 
     resources :products, only: [:index, :show]
-    resources :adresess, only: [:index, :create, :edit, :update, :destroy]
+    resources :addresess, only: [:index, :create, :edit, :update, :destroy]
 
-    resources :orders, only: [:index, :show, :create, :new]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete'
+
+    resources :orders, only: [:index, :show, :create, :new]
 
     resources :cart_products, only: [:index, :create, :update, :destroy]
     delete 'cart_products/destroy_all' => 'cart_products#destroy_all'
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :products, only: [:index, :show, :new, :create, :edit, :update]
     resources :orders, only: [:show, :update] do
-      resources :order_details, only: [:update]
+    resources :order_details, only: [:update]
     end
 
   end

@@ -16,3 +16,22 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+header{
+  widows: 100%;
+  height: 90px;
+}
+
+header img{
+  height: 80px;
+  width: 220px;
+}
+
+footer{
+  background-color: #ffb6bb;
+}
+
+footer img{
+  height: 40px;
+  width: 185px;
+}

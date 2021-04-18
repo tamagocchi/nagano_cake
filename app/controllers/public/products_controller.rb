@@ -5,4 +5,7 @@ class Public::ProductsController < ApplicationController
     @add_cart = CartProduct.new
   end
 
+  def index
+  end
+
 end
