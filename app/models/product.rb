@@ -3,6 +3,13 @@ class Product < ApplicationRecord
   has_many :cart_products, dependent: :destroy
   has_many :order_details, dependent: :destroy
 
-  enum is_active: { inactive: false, active: true }
   attachment :image
+
+  def is_active_to_string
+    if is_active == true
+      "販売中"
+    else
+      "販売停止中"
+    end
+  end
 end

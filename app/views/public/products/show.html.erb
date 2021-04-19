@@ -1,13 +1,28 @@
   <!----------- 顧客：商品詳細画面------------->
+<div class="container ml-0">
 
- <%= attachment_image_tag @product, :image, :fill, 100, 100, format: 'jpeg' %>
- <h1><%= @product.name %></h1>
- <p><%= @product.introduction %></p>
- <p class="font-weight-strong">￥<%= @product.price %> (税込)</p>
+  <div class="row mt-5 offset-md-4">
+    <div class="col-md-3 text-center">
+       <%= attachment_image_tag @product, :image, :fill, 200, 200, format: 'jpeg' %>
+    </div>
+    <div class="col-md-5 ml-5">
+      <h2><%= @product.name %></h2>
+      <p><%= @product.introduction %></p>
+      <div class="mt-5 mb-3 d-flex">
+        <h4 class="mb-0">￥<%= @product.price %></h4>
+        <p class="mb-0 pl-2 pt-1">(税込)</p>
+      </div>
+    </div>
+  </div>
 
- <%= form_with model: @add_cart, local: true do |f| %>
-   <%= f.select :product_quantity, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"]], include_blank: "個数選択" %>
-   <%= f.submit 'カートに入れる', class:"btn btn-sm btn-success ml-5" %>
-   <%= f.hidden_field :customer_id, :value => current_customer.id %>
-   <%= f.hidden_field :product_id, :value => @product.id %>
- <% end %>
+  <div class="row">
+    <div class="col-md-6 text-center offset-md-5">
+     <%= form_with model: @add_cart, local: true do |f| %>
+       <%= f.select :product_quantity, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"]], include_blank: "個数選択" %>
+       <%= f.submit 'カートに入れる', class:"btn btn-sm btn-success ml-5" %>
+       <%= f.hidden_field :customer_id, :value => current_customer.id %>
+       <%= f.hidden_field :product_id, :value => @product.id %>
+     <% end %>
+    </div>
+  </div>
+</div>
