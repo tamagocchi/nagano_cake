@@ -23,7 +23,9 @@ class Public::CustomersController < ApplicationController
 
     def quit
         @customer = current_customer
-        @customer.destroy
+        @customer.update(is_deleted: true)
+        
+        flash[:notice] = "ご利用頂き、誠にありがとうございました。"
         redirect_to root_path
     end
 
