@@ -12,4 +12,10 @@ class Product < ApplicationRecord
       "販売停止中"
     end
   end
+
+  def tax_included_price
+    tax_rate = 1.08
+    price * tax_rate
+  end
+
 end
