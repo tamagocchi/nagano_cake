@@ -1,0 +1,53 @@
+  <!----------- 商品新規登録画面------------->
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6 offset-md-1">
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">商品新規登録</h5>
+    </div>
+  </div>
+
+ <div class="row">
+  <div class="col-md-8 pl-5">
+    <%= form_with model: [:admin, @product], local:true do |f| %>
+
+      <div class="form-group form-inline">
+        <p>商品画像</p>
+        <%= f.attachment_field :image %>
+      </div>
+
+      <div class="form-group form-inline">
+      　<p>商品名</p>
+        <%= f.text_field :name, placeholder: "商品名", size: "30", class: "form-control" %>
+      </div>
+
+      <div class="form-group form-inline">
+      　<p>商品説明</p>
+        <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", size: "30x5", class: "form-control" %>
+      </div>
+
+      <div class="form-group form-inline">
+      　<p>ジャンル</p>
+        <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "--選択してください--", size: "30", class: "form-control" %>
+      </div>
+
+      <div class="form-group form-inline">
+      　<p>税込価格</p>
+        <p><%= f.text_field :price, placeholder: "1000", size: "30", class: "form-control" %> 円</p>
+      </div>
+
+      <div class="form-group form-inline">
+      　<p>販売ステータス</p>
+      　<%= f.radio_button :is_active, :active %>
+      　<%= f.label :is_active, "販売中", {value: :active, style: "display: inline-block;"} %>
+      　<%= f.radio_button :is_active, :inactive %>
+      　<%= f.label :is_active, "販売停止中", {value: :inactive, style: "display: inline-block;"} %>
+      </div>
+
+      <%= f.submit '新規登録', class:"btn btn-sm btn-success ml-5" %>
+    <% end %>
+  </div>
+ </div>
+
+</div>
