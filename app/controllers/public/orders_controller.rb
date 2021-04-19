@@ -14,7 +14,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order = User.order
+    @orders = Order.all
   end
 
   def create

@@ -6,7 +6,7 @@
       <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">注⽂情報入力</h5>
 
   <h6>支払い方法</h6>
-    <%= form_with(model: @order, local: true) do |f| %>
+    <%= form_with model: @address, local:true do |f| %>
       <div class="radio-inline">
         <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
         <%= f.label :クレジットカード, class: "payment_method_label" %>
@@ -30,7 +30,24 @@
       <div class="radio-inline">
         <%= f.radio_button :destination, :新しいお届け先 %>
       </div>
-   <% end %>
+   <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>郵便番号(ハイフンなし)</th>
+          <td> <%= f.text_field :postcode, placeholder: "0000000" %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td> <%= f.text_field :destination, placeholder: "東京都渋⾕区代々⽊神園町0-0", :size =>"60" %></td>
+        </tr>
+        <tr>
+          <th>宛名</th>
+          <td><%= f.text_field :delivery_name, placeholder: "令和道⼦" %></td>
+          <td><%= f.submit '確認画面に進む', class:"btn btn-sm btn-success" %></td>
+        </tr>
+     </tbody>
+   </table>
+  <% end %>
   </div>
  </div>
 </div>
