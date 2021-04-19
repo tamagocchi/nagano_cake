@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
 
   devise_for :admins
-  devise_for :customers, controllers: {
-    sessions:      'customers/sessions',
-    passwords:     'customers/passwords',
-    registrations: 'customers/registrations'
-  }
+  devise_for :customers,
+    path: '',
+    path_names: {
+      sign_up: '',
+      sign_in: 'login',
+      sign_out: 'logout',
+      registration: "signup",
+    },
+    controllers: {
+      sessions:      'customers/sessions',
+      passwords:     'customers/passwords',
+      registrations: 'customers/registrations'
+    }
 
   # ========= ユーザー(public)のルーティング ================
   scope module: :public do
@@ -24,8 +32,8 @@ Rails.application.routes.draw do
 
     resource :customers, only: [:edit, :update]
     get 'customers/my_page' => 'customers#show', as: 'customer_show'
-    get 'customers/edit' => 'customers#edit', as: 'customer_edit'
-    get 'customers/my_page' => 'customers#show'
+    # get 'customers/edit' => 'customers#edit', as: 'customer_edit'
+    # get 'customers/my_page' => 'customers#show'
     get 'customers/quit_confirm' => 'customers#quit_confirm'
     patch 'customers/quit' => 'customers#quit'
   end

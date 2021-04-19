@@ -8,10 +8,10 @@
         <% if customer_signed_in? %>
 
           <!--カスタマーがログインしている時 -->
-          <li class="nav-item">
+          <li class="nav-item login__customers">
             ようこそ、<%= current_customer.last_name + current_customer.first_name %>さん！
           </li>
-          <li class="nav-item"><%= link_to "マイページ", customers_my_page_path, class: 'nav-link text-dark' %></li>
+          <li class="nav-item"><%= link_to "マイページ", customer_show_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to "商品一覧", products_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to "カート", cart_products_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %></li>
