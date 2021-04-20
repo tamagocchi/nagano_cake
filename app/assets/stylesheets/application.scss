@@ -27,6 +27,10 @@ header img{
   width: 220px;
 }
 
+.login__customers{
+  margin-right: 100px;
+}
+
 footer{
   background-color: #ffb6bb;
 }
@@ -34,4 +38,13 @@ footer{
 footer img{
   height: 40px;
   width: 185px;
+}
+
+.active_color {
+  color: #33CC00;
+  font-weight: bold;
+}
+
+.inactive_color {
+  color: gray;
 }
