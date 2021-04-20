@@ -4,11 +4,9 @@
   <div class="row">
     <div class="col-md-6 offset-md-1">
       <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">注⽂情報確認</h5>
-   </div>
+    </div>
 
- <table class="table table-bordered">
- <div class="row">
-    <div class="col-md-8 pl-5">
+ <div class="col-md-8 offset-md-1">
       <table class="table table-bordered">
         <thead class="thead-light">
           <tr>
@@ -39,29 +37,25 @@
         <% end %>
        </tbody>
       </table>
+      <h5>支払い方法</h5><%= @order.payment_method %><br>
+     <h5>お届け先</h5><%= @address.postcode %><%= @address.destination %><br>
+       <%= @address.delivery_name %>
     </div>
   </div>
 
-  <div class="col-md-3">
+ <% @orders.each do |order| %>
     <table class="table table-bordered">
-      <% @order.each do |order| %>
        <tbody>
-          <tr><th>送料</th><td><%= order.created_at %></td></tr>
+          <tr><th>送料</th><td><%= order.shipping_fee %></td></tr>
           <tr><th>商品合計</th><td><%= @sum %></td></tr>
           <tr><th>請求金額</th><td><%= order.total_price %></td></tr>
        </tbody>
-      <% end %>
     </table>
-  </div>
-
-
-  <h3>支払い方法</h3>
-
-  <h3>お届け先</h3>
+ <% end %>
 
   <div class="text-center">
     <h3 class="mt-5 mb-2">
-      <input type="submit" class='btn btn-success' value='注文を確定する'>
+      <%= link_to '注文を確定する', orders_complete_path, class:"btn btn-sm btn-success" %>
       </h3>
   </div>
 

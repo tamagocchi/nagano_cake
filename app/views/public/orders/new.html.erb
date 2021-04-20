@@ -2,11 +2,11 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-md-6 offset-md-1">
+    <div class="col-md-12">
       <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">注⽂情報入力</h5>
 
   <h6>支払い方法</h6>
-    <%= form_with model: @address, local:true do |f| %>
+    <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
       <div class="radio-inline">
         <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
         <%= f.label :クレジットカード, class: "payment_method_label" %>
@@ -17,37 +17,42 @@
       </div>
 
   <h6>お届け先</h6>
-   <% @orders.each do |order| %>
-     <div class="radio-inline">
-        <%= f.radio_button :destination, :ご自身の住所, checked: "checked" %>
-        <%= order.address %>
+        <div class="radio-inline">
+          <%= f.radio_button :address_option, 1, checked: "checked" %>
+          <%= f.label :"ご自身の住所", class: "address_label" %><br>
+          <%= @address %>
+        </div>
+        <div class="radio-inline">
+          <%= f.radio_button :address_option, 2 %>
+          <%= f.label :"登録住所からの選択", class: "destination_label" %><br>
+          <%= f.collection_select :address_id, Address.all, :id, :order_detail, size: "30" %>
+        </div>
+        <div class="radio-inline">
+          <%= f.radio_button :address_option, 3 %>
+          <%= f.label :"新しいお届け先", class: "destination_label" %>
+            <table class="table table-borderless">
+                <tbody>
+                  <tr>
+                    <th>郵便番号(ハイフンなし)</th>
+                    <td> <%= f.text_field :postcode, placeholder: "0000000" %></td>
+                  </tr>
+                  <tr>
+                    <th>住所</th>
+                    <td> <%= f.text_field :destination, placeholder: "東京都渋⾕区代々⽊神園町0-0", :size =>"60" %></td>
+                  </tr>
+                  <tr>
+                    <th>宛名</th>
+                    <td><%= f.text_field :delivery_name, placeholder: "令和道⼦" %></td>
+                  </tr>
+                </tbody>
+             </table>
+             <div class="text-center">
+              <h3 class="mt-5 mb-2">
+               <%= f.submit '確認画面に進む', class:"btn btn-sm btn-success" %>
+              </h3>
+             </div>
+          <% end %>
+        </div>
       </div>
-      <div class="radio-inline">
-        <%= f.radio_button :destination, :登録住所からの選択 %>
-        <%= f.collection_select :address, @address, :id, :destination, { prompt: "選択してください" } %>
-      </div>
-   <% end %>
-      <div class="radio-inline">
-        <%= f.radio_button :destination, :新しいお届け先 %>
-      </div>
-   <table class="table table-borderless">
-      <tbody>
-        <tr>
-          <th>郵便番号(ハイフンなし)</th>
-          <td> <%= f.text_field :postcode, placeholder: "0000000" %></td>
-        </tr>
-        <tr>
-          <th>住所</th>
-          <td> <%= f.text_field :destination, placeholder: "東京都渋⾕区代々⽊神園町0-0", :size =>"60" %></td>
-        </tr>
-        <tr>
-          <th>宛名</th>
-          <td><%= f.text_field :delivery_name, placeholder: "令和道⼦" %></td>
-          <td><%= f.submit '確認画面に進む', class:"btn btn-sm btn-success" %></td>
-        </tr>
-     </tbody>
-   </table>
-  <% end %>
+    </div>
   </div>
- </div>
-</div>
