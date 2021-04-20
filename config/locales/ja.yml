@@ -1,6 +1,0 @@
-ja:
-  enums:
-    product:
-      is_active:
-        active: 販売中
-        inactive: 販売停止中
