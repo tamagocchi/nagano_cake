@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
 
   devise_for :admins
-  devise_for :customers
+  devise_for :customers,
+    path: '',
+    path_names: {
+      sign_up: '',
+      sign_in: 'login',
+      sign_out: 'logout',
+      registration: "signup",
+    },
+    controllers: {
+      sessions:      'customers/sessions',
+      passwords:     'customers/passwords',
+      registrations: 'customers/registrations'
+    }
 
   # ========= ユーザー(public)のルーティング ================
   scope module: :public do
@@ -21,7 +33,7 @@ Rails.application.routes.draw do
     delete 'cart_products/:id' => 'cart_products#destroy', as: 'destroy_cart_product'
 
     resource :customers, only: [:edit, :update]
-    get 'customers/my_page' => 'customers#show', as: 'show'
+    get 'customers/my_page' => 'customers#show', as: 'customer_show'
     get 'customers/quit_confirm' => 'customers#quit_confirm'
     patch 'customers/quit' => 'customers#quit'
   end
