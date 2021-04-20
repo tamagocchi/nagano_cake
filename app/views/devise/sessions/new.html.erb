@@ -1,7 +1,5 @@
-<h3 class="ml-4 mb-5">ログイン</h3>
-<p class="ml-5 mb-3">会員の方はこちらからログイン</p>
-
-<%= form_with model: @customer, url: customer_session_path, id: 'new_user', class: 'new_user', local: true do |f|%>
+<h3 class="ml-4 mb-5">管理者ログイン</h3>
+<%= form_with model: @admin, url: admin_session_path, id: 'new_user', class: 'new_user', local: true do |f|%>
   <div class="row ml-5">
     <label class="col-lg-3 ml-5">メールアドレス</label>
     <div class="col-lg-3">
@@ -15,7 +13,7 @@
       <em>(<%= @minimum_password_length %>文字以上)</em>
     <% end %></label>
     <div class="col-lg-3">
-      <%= f.password_field :password, autocomplete: "current_password", class: 'col-sm-12' %>
+      <%= f.password_field :password, autocomplete: "current-password", class: 'col-sm-12' %>
     </div>
   </div><br>
 
@@ -23,14 +21,3 @@
     <%= f.submit "ログイン", class: "btn btn-primary col-lg-2 ml-5" %>
   </div>
 <% end %>
-
-<div class="row ml-5 mt-3">
-    <h3>登録がお済でない方</h3>
-    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-      <%= link_to "こちら", new_registration_path(resource_name) %>
-      <p>から新規登録を行ってください。</p>
-    <% end %>
-    <h4>管理者の方</h4>
-    <%= link_to "こちら", new_admin_session_path %>
-    <strong>からログインしてください</strong>
-</div>

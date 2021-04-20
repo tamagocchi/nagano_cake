@@ -4,8 +4,9 @@
     <table class="row table">
       <tr>
         <th class="col-xs-2">顧客ID</th>
-        <td class="col-xs-10"><%= @customer.id %>
-          <% if @customer.is_customer_status == false %>
+        <td class="col-xs-10">
+          <%= @customer.id %>
+          <% if @customer.is_deleted == false %>
             <span class="label label-primary">
               有効会員
             </span>
@@ -29,7 +30,7 @@
 
       <tr>
         <th>郵便番号</th>
-        <td><%= @customer.postal_code %></td>
+        <td><%= @customer.postcode %></td>
       </tr>
 
       <tr>
@@ -49,8 +50,8 @@
     </table>
 
     <div class="row">
-      <%= link_to "編集する", edit_admins_customer_path(@customer), class: "btn btn-success" %>
-      <%= link_to "注文一覧を見る",admins_orders_path, class: "btn btn-success" %>
+      <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %>
+      <!--%= link_to "注文一覧を見る",admins_orders_path, class: "btn btn-success" %>-->
     </div>
   </div>
 </div>
