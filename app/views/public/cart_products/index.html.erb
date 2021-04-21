@@ -28,10 +28,10 @@
         <% @cart_products.each do |cart_product| %>
           <tr>
             <td>
-              <p><%= Product.find(cart_product.product_id).name %></p>
+              <p><%= cart_product.product.name %></p>
             </td>
             <td>
-              <p><%= Product.find(cart_product.product_id).tax_included_price.floor %></p>
+              <p><%= cart_product.product.tax_included_price.floor %></p>
             </td>
             <td>
             <%= form_with model: cart_product, method: :patch, local:true do |f| %>
@@ -41,7 +41,7 @@
             <% end %>
             </td>
             <td>
-              <p><%= @sub_total=Product.find(cart_product.product_id).tax_included_price.floor * cart_product.product_quantity %></p>
+              <p><%= @sub_total=cart_product.product.tax_included_price.floor * cart_product.product_quantity %></p>
             </td>
             <td>
               <div>
