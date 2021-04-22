@@ -26,6 +26,7 @@
         <tbody>
         <% @sum = 0 %>
         <% @cart_products.each do |cart_product| %>
+        <% if cart_product.customer.id == current_customer.id %>
           <tr>
             <td>
               <p><%= cart_product.product.name %></p>
@@ -51,6 +52,7 @@
           </tr>
           <% @sum += @sub_total %>
         <% end %>
+       <% end %>
        </tbody>
       </table>
     </div>
