@@ -33,6 +33,7 @@ header img{
 
 footer{
   background-color: #ffb6bb;
+  height: 100px;
 }
 
 footer img{
@@ -47,4 +48,12 @@ footer img{
 
 .inactive_color {
   color: gray;
+}
+
+.new_btn_color {
+  color: pink;
+  &:hover {
+    text-decoration: none;
+    color: gray;
+  }
 }
