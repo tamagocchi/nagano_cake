@@ -27,11 +27,11 @@
           <td><%= product.id %></td>
           <td><u><%= link_to product.name, admin_product_path(product.id), class:"text-dark" %></u></td>
           <td><%= product.tax_included_price.floor %></td>
-          <td><%= Genre.find(product.genre_id).name %></td>
+          <td><%= product.genre.name %></td>
           <% if product.is_active == true %>
-          <td class="active_color"><%= product.is_active_to_string %></td>
+            <td class="active_color"><%= product.is_active_to_string %></td>
           <% else %>
-          <td class="inactive_color"><%= product.is_active_to_string %></td>
+            <td class="inactive_color"><%= product.is_active_to_string %></td>
           <% end %>
         </tr>
       <% end %>
