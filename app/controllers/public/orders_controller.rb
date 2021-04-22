@@ -1,11 +1,21 @@
 class Public::OrdersController < ApplicationController
 
   def index
-    @orders = Order.all
+    @order_products = current_customer.orders
   end
 
   def show
-    @order = Order.all
+    @orders = Order.all
+    @order_products = current_customer.orders
+
+    @sub_total = 0
+    @order_products.shipping_fee = 800
+
+    @cart_products = current_customer.cart_products
+    @cart_products.each do |cart|
+    @sub_total += cart.product.price * cart.product_quantity
+    end
+
   end
 
   def new
@@ -15,9 +25,12 @@ class Public::OrdersController < ApplicationController
 
   def confirm
 
-    @orders = Order.all
+    @cart_products = current_customer.cart_products
+    @sub_total = 0
 
-    @order_address = params[:order][:address_option]
+    @cart_products.each do |cart|
+    @sub_total += cart.product.price * cart.product_quantity
+    end
 
     @order = Order.new
     @order.customer_id = current_customer.id
@@ -25,11 +38,13 @@ class Public::OrdersController < ApplicationController
     @order.shipping_fee = 800
     @order.payment_method = params[:order][:payment_method]
 
+    @order_address = params[:order][:address_option]
+
     if @order_address == "1"
 
      @order.postcode = current_customer.postcode
      @order.destination = current_customer.address
-     @order.delivery_name = current_customer.name
+     @order.delivery_name = current_customer.last_name + current_customer.first_name
 
     elsif @order_address == "2"
 
@@ -40,14 +55,25 @@ class Public::OrdersController < ApplicationController
 
     elsif @order_address == "3"
 
+     @order.postcode = params[:order][:postcode]
+     @order.destination = params[:order][:destination]
+     @order.delivery_name = params[:order][:delivery_name]
+
     end
 
   end
 
   def create
-    @product = Product.find(params[:product_id])
-    @order = @product.order.new(order_params)
+
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.postcode = current_customer.postcode
+    @order.destination = current_customer.address
+    @order.delivery_name = current_customer.last_name + current_customer.first_name
+    @order.total_price = current_customer.cart_products, + 800
     @order.save
+
+
     redirect_to orders_complete_path
   end
 
@@ -57,7 +83,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:address_id, :postcode, :total_price, :payment_method, :delivery_name)
+    params.require(:order).permit(:postcode, :total_price, :payment_method, :destination, :delivery_name)
   end
 
 end

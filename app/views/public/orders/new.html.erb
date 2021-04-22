@@ -20,12 +20,13 @@
         <div class="radio-inline">
           <%= f.radio_button :address_option, 1, checked: "checked" %>
           <%= f.label :"ご自身の住所", class: "address_label" %><br>
-          <%= @address %>
+          〒<%= current_customer.postcode %><%= current_customer.address %><br>
+          <%= current_customer.last_name %><%= current_customer.first_name %>
         </div>
         <div class="radio-inline">
           <%= f.radio_button :address_option, 2 %>
           <%= f.label :"登録住所からの選択", class: "destination_label" %><br>
-          <%= f.collection_select :address_id, Address.all, :id, :order_detail, size: "30" %>
+          <%= f.collection_select :a, Address.all, :id, :order_detail, size: "30" %>
         </div>
         <div class="radio-inline">
           <%= f.radio_button :address_option, 3 %>
