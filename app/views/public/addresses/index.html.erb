@@ -9,6 +9,7 @@
 
  <table class="table table-borderless">
     <%= form_with model: @address, local:true do |f| %>
+      <%= f.hidden_field :id, :value => @address.id %>
       <tbody>
         <tr>
           <th>郵便番号(ハイフンなし)</th>

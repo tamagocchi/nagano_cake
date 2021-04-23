@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-
-# ====== 新規登録・ログイン・ログアウト後の遷移先 ==========
+# ====== ログイン・ログアウト後の遷移先 ==========
   private
+
+  def after_sign_up_path_for(resource)
+    customer_show_path(current_customer.id)
+  end
 
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.is_a?(Admin)

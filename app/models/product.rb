@@ -5,6 +5,9 @@ class Product < ApplicationRecord
 
   attachment :image
 
+  validates :name, presence: true
+  validates :price, presence: true
+
   def is_active_to_string
     if is_active == true
       "販売中"
