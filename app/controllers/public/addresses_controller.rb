@@ -32,7 +32,7 @@ class Public::AddressesController < ApplicationController
   private
 
   def address_params
-    params.require(:address).permit(:postcode, :destination, :delivery_name)
+    params.require(:address).permit(:postcode, :destination, :delivery_name).merge(customer_id: current_customer.id)
   end
 
 end
