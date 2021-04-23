@@ -1,39 +1,44 @@
+<h3 class="ml-4 mb-5">マイページ</h3>
 <div class="row">
-  <div class="col-xs-12">
-    <h3 class="text-center">マイページ</h3>
-    <table class='class="table table-bordered table-condensed"'>
-      <span>登録情報</span>
-      <%= link_to "編集する", edit_customers_path, class: "btn btn-success" %>
+  <div class="col-lg-12">
+    <table class="table table-bordered">
+      <div class="mb-3">
+        <span class="ml-2">登録情報</span>
+        <%= link_to "編集する", edit_customers_path, class: "btn btn-success col-lg-3 table__button" %>
+      </div>
       <tr>
-        <td class="col-xs-2">氏名</td>
+        <td class="col-xs-2 table-secondary">氏名</td>
         <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
       </tr>
       <tr>
-        <td class="col-xs-2">カナ</td>
+        <td class="col-xs-2 table-secondary">カナ</td>
         <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
       </tr>
       <tr>
-        <td class="col-xs-2">郵便番号</td>
+        <td class="col-xs-2 table-secondary">郵便番号</td>
         <td><%= @customer.postcode %></td>
       </tr>
       <tr>
-        <td class="col-xs-2">住所</td>
+        <td class="col-xs-2 table-secondary">住所</td>
         <td><%= @customer.address %></td>
       </tr>
       <tr class="col-xs-2">
-        <td>電話番号</td>
+        <td class="table-secondary">電話番号</td>
         <td><%= @customer. phone_number %></td>
       </tr>
       <tr class="col-xs-2">
-        <td>メールアドレス</td>
+        <td class="table-secondary">メールアドレス</td>
         <td><%= @customer.email %></td>
       </tr>
     </table>
 
-    <p>配送先</p>
-    <!--%= link_to "一覧を見る", deliver_path(@customer.id), class: "btn btn-primary" %>-->
-
-    <p>注文履歴</p>
-    <!--%= link_to "一覧を見る", order_details_path, class: "btn btn-primary" %>-->
+    <div class="mb-3">
+        <span class="ml-2">配達先　</span>
+        <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary col-lg-3 table__button" %>
+    </div>
+    <div class="mb-3">
+        <span class="ml-2">注文履歴</span>
+        <%= link_to "一覧を見る", order_path(@customer.id), class: "btn btn-primary col-lg-3 table__button" %>
     </div>
   </div>
+</div>
