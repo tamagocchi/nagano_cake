@@ -71,13 +71,14 @@
     </div>
   </div><br>
 
-  <div class="actions">
+
+  <div class="actions ml-4">
     <%= f.submit "新規登録", class: "btn btn-success col-lg-2" %>
   </div>
 <% end %>
 
 <h3 class="ml-4 mt-5">既に登録済みの方</h3>
-<div class="col-sm-3 mt-3 ml-5">
+<div class="col-lg-12 mt-3 ml-5">
   <%- if controller_name != 'sessions' %>
     <%= link_to "こちら", new_session_path(resource_name) %>
   <% end %>

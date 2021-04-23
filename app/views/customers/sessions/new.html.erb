@@ -24,13 +24,24 @@
   </div>
 <% end %>
 
-<div class="row ml-5 mt-3">
+<div class="row ml-2 mt-5">
+  <div class="col-lg-12">
     <h3>登録がお済でない方</h3>
-    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-      <%= link_to "こちら", new_registration_path(resource_name) %>
-      <p>から新規登録を行ってください。</p>
-    <% end %>
-    <h4>管理者の方</h4>
-    <%= link_to "こちら", new_admin_session_path %>
-    <strong>からログインしてください</strong>
+    <div class="mt-4 ml-4">
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "こちら", new_registration_path(resource_name) %>
+        <p class="d-lg-inline">から新規登録を行ってください。</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row ml-2 mt-5">
+  <div class="col-lg-12">
+    <h3>管理者の方</h3>
+    <div class="mt-4 ml-4">
+      <%= link_to "こちら", new_admin_session_path %>
+      <p class="d-lg-inline">からログインしてください</p>
+    </div>
+  </div>
 </div>
