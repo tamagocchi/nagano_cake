@@ -5,15 +5,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @orders = Order.all
-    @order_products = current_customer.orders
+    @order = current_customer.orders.find(params[:id])
+    @order_details = @order.order_details
 
     @sub_total = 0
-    @order_products.shipping_fee = 800
-
-    @cart_products = current_customer.cart_products
-    @cart_products.each do |cart|
-    @sub_total += cart.product.price * cart.product_quantity
+    @order_details.each do |order_detail|
+    @sub_total += order_detail.product.price * order_detail.product_quantity
     end
 
   end
@@ -73,6 +70,7 @@ class Public::OrdersController < ApplicationController
     @order.total_price = current_customer.cart_products, + 800
     @order.save
 
+    order_details_maker(@order)
 
     redirect_to orders_complete_path
   end
@@ -81,6 +79,25 @@ class Public::OrdersController < ApplicationController
   end
 
   private
+
+  def order_details_maker(order)
+
+    cart_products = current_customer.cart_products
+
+    cart_products.each do |cart_product|
+      order_detail = OrderDetail.new
+
+      order_detail.product_id = cart_product.product_id
+      order_detail.order_id = order.id
+      order_detail.product_quantity = cart_product.product_quantity
+      order_detail.making_status = 0
+      order_detail.price = cart_product.product.price
+      order_detail.save
+    end
+
+    cart_products.destroy_all
+
+  end
 
   def order_params
     params.require(:order).permit(:postcode, :total_price, :payment_method, :destination, :delivery_name)

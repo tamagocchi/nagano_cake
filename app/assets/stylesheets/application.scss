@@ -17,6 +17,12 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+html body {
+  width: 100%;
+  height: 100%;
+}
+
+
 header{
   widows: 100%;
   height: 90px;
@@ -47,4 +53,12 @@ footer img{
 
 .inactive_color {
   color: gray;
+}
+
+.fullheight {
+  height: 100%;
+}
+
+li {
+  list-style: none;
 }

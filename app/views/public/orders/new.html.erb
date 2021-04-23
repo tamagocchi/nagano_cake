@@ -26,7 +26,7 @@
         <div class="radio-inline">
           <%= f.radio_button :address_option, 2 %>
           <%= f.label :"登録住所からの選択", class: "destination_label" %><br>
-          <%= f.collection_select :a, Address.all, :id, :order_detail, size: "30" %>
+          <%= f.collection_select :address_id, Address.all, :id, :order_detail, size: "30" %>
         </div>
         <div class="radio-inline">
           <%= f.radio_button :address_option, 3 %>
@@ -49,7 +49,7 @@
              </table>
              <div class="text-center">
               <h3 class="mt-5 mb-2">
-               <%= f.submit '確認画面に進む', class:"btn btn-sm btn-success" %>
+               <%= f.submit '確認画面に進む', class:"glyphicon glyphicon-home btn btn-primary" %>
               </h3>
              </div>
           <% end %>
