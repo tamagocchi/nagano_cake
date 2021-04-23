@@ -26,7 +26,7 @@ class Public::CustomersController < ApplicationController
   def quit
     @customer = current_customer
     @customer.update(is_deleted: true)
-
+    reset_session
     flash[:notice] = "ご利用頂き、誠にありがとうございました。"
     redirect_to root_path
   end
