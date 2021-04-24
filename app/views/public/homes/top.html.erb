@@ -1,3 +1,45 @@
-<div class="container">
-  
+<div class="visual__images">
+    <%= image_tag 'visual__image-1', class: "visual__images-item rounded" %>
 </div>
+
+<div class="row mt-5">
+    <div class="column col-lg-6 mt-2">
+        <h3>Nagano Cakeとは？</h3>
+        <p class="mt-4 heading__text">
+            "ケーキを通じて、人々に幸せを届けたい"という想いからNagano Cakeはスタートしました。
+            <br>
+            我々は、豊かな暮らしを育む一端として可能性を探り、独自の製法でケーキを製作しております。
+            <br>
+            ケーキから生まれるコミュニケーションや豊かな生活を大事にしてほしい。
+            <br>
+            その時間が長くあり続けてほしい。
+            <br>
+            そんな思いを込めて、一つ一つケーキを制作しております。
+            <br>
+            皆様のご注文をお待ちしております。
+        </p>
+    </div>
+    <div class="column col-lg-6">
+        <%= image_tag 'heading__image1', class: "float-right w-50 rounded" %>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-lg-12 mt-2">
+        <h3>商品一覧</h3>
+        <div class="d-flex flex-wrap mt-4">
+            <% @products.first(8).each do |product| %>
+                <div class="col-lg-3 products__image">
+                    <%= link_to product_path(product.id), style: "color: #494848;" do %>
+                        <%= attachment_image_tag(product, :image, size: "230x230", class: "rounded") %>
+                        <br>
+                        <%= product.name %>
+                        <br>
+                        ¥<%= product.tax_included_price.floor %>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<%= link_to "全ての商品を見る＞", products_path, style: "color: #494848;", class: "float-right mt-3" %>
