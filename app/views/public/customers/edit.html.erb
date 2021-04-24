@@ -1,42 +1,46 @@
-<h3 class="ml-4 mb-5">登録情報編集</h3>
-<div class="row">
-  <div class="col-lg-12">
-    <%= form_with model: @customer, url: customers_path ,method: :PATCH, local: true do |f| %>
-      <div>
-        <div class="col-xs-12">
-          <%= f.label :"氏名", class: "col-sm-3 control-label", style: "margin: 10px;" %>
-          <%= f.text_field :last_name, class: "last_name col-sm-3 form-control-static name", style: "margin: 10px;" %>
-          <%= f.text_field :first_name, class: "first_name col-sm-3 form-control-static name", style: "margin: 10px;" %>
-        </div>
-        <div class="col-xs-12">
-          <%= f.label :"フリガナ", class: "col-sm-3 control-label", style: "margin: 10px;" %>
-          <%= f.text_field :last_name_kana, class: "last_name_kana col-sm-3 form-control-static name", style: "margin: 10px;" %>
-          <%= f.text_field :first_name_kana, class: "first_name_kana col-sm-3 form-control-static name", style: "margin: 10px;" %>
-        </div>
-        <div class="col-xs-12">
-          <%= f.label :"メールアドレス", class: "col-sm-3 control-label", style: "margin: 10px;" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6 form-control-static", style: "margin: 10px;" %>
-        </div>
-        <div class="col-xs-12">
-          <%= f.label :"郵便番号", class: "col-sm-3 control-label", style: "margin: 10px;" %>
-          <%= f.text_field :postcode, class: "col-sm-2 form-control-static", style: "margin: 10px;" %>
-        </div>
-        <div class="col-xs-12">
-          <%= f.label :"住所", class: "col-sm-3 control-label", style: "margin: 10px;" %>
-          <%= f.text_field :address, class: "col-sm-8 form-control-static", style: "margin: 10px;" %>
-        </div>
-        <div class="col-xs-12">
-          <%= f.label :"電話番号(ハイフンなし)", class: "col-sm-3 control-label", style: "margin: 10px;" %>
-          <%= f.text_field :phone_number, class: "col-sm-2 form-control-static", style: "margin: 10px;" %>
-        </div>
-      </div>
+<div class="container">
+  <h4 class="ml-4 my-4 bg-light d-inline-flex">登録情報編集</h4>
 
-      <div class="actions col-xs-10 col-xs-offset-2 mt-3">
-        <p>
-          <%= f.submit "編集内容を保存する", class: "btn btn-primary col-sm-3", style: "margin: 10px;" %>
-          <%= link_to " 退会する", customers_quit_confirm_path, class: "glyphicon glyphicon-tint btn btn-danger col-sm-3", style: "margin: 10px;" %>
-        </p>
-      </div>
-    <% end %>
+  <div class="row">
+    <div class="col-lg-12">
+      <%= form_with model: @customer, url: customers_path ,method: :PATCH, local: true do |f| %>
+        <div>
+          <div class="col-xs-12">
+            <%= f.label :"氏名", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+            <%= f.text_field :last_name, class: "last_name col-sm-3 form-control-static name", style: "margin: 10px;" %>
+            <%= f.text_field :first_name, class: "first_name col-sm-3 form-control-static name", style: "margin: 10px;" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label :"フリガナ", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+            <%= f.text_field :last_name_kana, class: "last_name_kana col-sm-3 form-control-static name", style: "margin: 10px;" %>
+            <%= f.text_field :first_name_kana, class: "first_name_kana col-sm-3 form-control-static name", style: "margin: 10px;" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label :"メールアドレス", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6 form-control-static", style: "margin: 10px;" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label :"郵便番号", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+            <%= f.text_field :postcode, class: "col-sm-2 form-control-static", style: "margin: 10px;" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label :"住所", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+            <%= f.text_field :address, class: "col-sm-8 form-control-static", style: "margin: 10px;" %>
+          </div>
+          <div class="col-xs-12">
+            <%= f.label :"電話番号(ハイフンなし)", class: "col-sm-3 control-label", style: "margin: 10px;" %>
+            <%= f.text_field :phone_number, class: "col-sm-2 form-control-static", style: "margin: 10px;" %>
+          </div>
+        </div>
+
+        <div class="actions col-xs-10 offset-md-4 mt-3">
+          <p>
+            <%= f.submit "編集内容を保存する", class: "btn btn-primary btn-sm", style: "margin: 10px;" %>
+            <%= link_to " 退会する", customers_quit_confirm_path, class: "glyphicon glyphicon-tint btn btn-danger btn-sm ml-5", style: "margin: 10px;" %>
+          </p>
+        </div>
+      <% end %>
+    </div>
   </div>
+
 </div>

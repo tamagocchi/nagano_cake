@@ -49,7 +49,7 @@ header img{
 
 .visual__images-item{
   width: 100%;
-  height: 580px;
+  height: 640px;
 }
 
 
@@ -69,12 +69,12 @@ footer{
   width: 100%;
   height: 140px;
   background-color: #ffb6bb;
+  height: 100px;
 }
 
 footer img{
   height: 40px;
   width: 185px;
-  margin-top: 30px;
 }
 
 .active_color {
@@ -84,4 +84,12 @@ footer img{
 
 .inactive_color {
   color: gray;
+}
+
+.new_btn_color {
+  color: pink;
+  &:hover {
+    text-decoration: none;
+    color: gray;
+  }
 }
