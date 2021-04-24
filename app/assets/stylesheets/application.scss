@@ -55,10 +55,10 @@ footer img{
   color: gray;
 }
 
-.fullheight {
-  height: 100%;
-}
-
 li {
   list-style: none;
+}
+
+.container-fluid .row .column {
+  height: 100%;
 }

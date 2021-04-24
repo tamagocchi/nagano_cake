@@ -1,1 +1,38 @@
-<h1>Admin's TOP</h1>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6 offset-md-1">
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">注⽂履歴一覧</h5>
+    </div>
+  </div>
+
+  <table class="table table-borderless">
+      <thead class="thead-light">
+          <tr>
+             <th>購入日時</th>
+             <th>購入者</th>
+             <th>注文個数</th>
+             <th>注文ステータス</th>
+          </tr>
+      </thead>
+      <% @order_quantity = 0 %>
+   <% @orders.each do |order| %>
+      <tbody>
+          <tr>
+            <td><%= order.created_at.to_s(:datetime_jp) %></td>
+            <td><%= order.customer.last_name + current_customer.first_name %></td>
+
+             <td>
+               <% order.order_details.each do |order_detail| %>
+                <%= order_detail.product_quantity %>
+                <% end %>
+             </td>
+
+            <td><%= order.order_status %></td>
+          </tr>
+      </tbody>
+   <% end %>
+  </table>
+
+</div>
