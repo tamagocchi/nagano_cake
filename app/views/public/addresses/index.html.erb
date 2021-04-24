@@ -5,8 +5,8 @@
       <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">配送先登録/⼀覧</h5>
     </div>
 
+  <%= form_with model:@address, local:true do |f| %>
   <table class="table table-borderless">
-    <%= form_with model:@address, local:true do |f| %>
     <tbody>
       <tr>
         <th>郵便番号(ハイフンなし)</th>
@@ -22,8 +22,8 @@
         <td><%= f.submit '新規登録', class:"btn btn-sm btn-success" %></td>
       </tr>
     </tbody>
-    <% end %>
   </table>
+  <% end %>
 
   <div class="col-md-9">
     <table class="table table-bordered">
