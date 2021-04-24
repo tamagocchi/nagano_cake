@@ -21,7 +21,7 @@
    <% @order_products.each do |order| %>
       <tbody>
           <tr>
-            <td><%= order.created_at.to_s(:datetime_jp) %></td>
+            <td><%= order.created_at.to_s(:slash) %></td>
 
             <td>〒<%= order.postcode %><br>
                <%= order.destination %><br>

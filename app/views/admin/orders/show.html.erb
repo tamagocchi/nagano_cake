@@ -12,7 +12,7 @@
      <table class="table table-borderless">
          <thead>
             <tr><th>購入者</th><td><%= @order.delivery_name %></td></tr>
-            <tr><th>注文日</th><td><%= @order.created_at.to_s(:datetime_jp) %></td></tr>
+            <tr><th>注文日</th><td><%= @order.created_at.to_s(:slash) %></td></tr>
             <tr><th>配送先</th><td>〒<%= @order.postcode %><%= @order.destination %><%= @order.delivery_name %></td></tr>
             <tr><th>支払方法</th><td><%= @order.payment_method %></td></tr>
             <tr>
@@ -20,9 +20,10 @@
               <td>
                 <%= form_with(model: @order, url: admin_order_path, method: :patch, local: true) do |f| %>
                 <%= f.select :order_status, Order.order_statuses_i18n.keys.map{|k| [I18n.t("enums.order.order_status.#{k}"), k]}, {} %>
-                <%= f.submit '更新', class:"glyphicon glyphicon-home btn btn-success" %>
+                <%= f.submit '更新', class:"btn btn-sm btn-success" %>
                 <% end %>
               </td>
+              <td></td>
            </tr>
          </thead>
      </table>
@@ -58,8 +59,8 @@
             </td>
               <td>
                   <%= form_with(model: order_detail, url: admin_order_order_detail_path(order_detail.id), method: :patch, local: true) do |f| %>
-                  <%= f.select :making_status, OrderDetail.making_statuses_i18n.keys.map{|k| [I18n.t("enums.order_details.making_status.#{k}"), k]}, {} %>
-                  <%= f.submit '更新', class:"glyphicon glyphicon-home btn btn-success" %>
+                  <%= f.select :making_status, OrderDetail.making_statuses_i18n.keys.map{|k| [I18n.t("enums.order_detail.making_status.#{k}"), k]}, {} %>
+                  <%= f.submit '更新', class:"btn btn-sm btn-success" %>
                   <% end %>
              </td>
           </tr>

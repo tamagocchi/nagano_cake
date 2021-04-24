@@ -9,10 +9,10 @@
 
  <div class="row">
    <div class="col-xs-6">
-     <h6>注文情報</h6>
+     <h6><strong>注文情報</strong></h6>
      <table class="table table-bordered">
          <thead class="thead-light">
-            <tr><th>注文日</th><td><%= @order.created_at.to_s(:datetime_jp) %></td></tr>
+            <tr><th>注文日</th><td><%= @order.created_at.to_s(:slash) %></td></tr>
             <tr><th>配送先</th><td><%= @order.destination %></td></tr>
             <tr><th>支払い方法</th><td><%= @order.payment_method %></td></tr>
             <tr><th>ステータス</th><td><%= @order.order_status %></td></tr>
@@ -21,13 +21,13 @@
   </div>
 
    <div class="col-xs-3 offset-md-1">
-     <h6>請求情報</h6>
+     <h6><strong>請求情報</strong></h6>
       <table class="table table-bordered">
         <% @sum = 0 %>
          <thead class="thead-light">
             <tr><th>商品合計</th><td><%= @sub_total %></td></tr>
             <tr><th>配送料</th><td><%= 800 %></td></tr>
-            <tr><th>ご請求金額</th><td><%= @sum = @sub_total + 800 %></td></tr>
+            <tr><th><strong>ご請求金額</strong></th><td><%= @sum = @sub_total + 800 %></td></tr>
          </thead>
        </table>
      </div>
@@ -35,7 +35,7 @@
 
 　<div class="row">
    <div class="col-xs-12">
-    <h6>注⽂内容</h6>
+    <h6><strong>注⽂内容</strong></h6>
     <table class="table table-bordered">
         <thead class="thead-light">
            <tr>
