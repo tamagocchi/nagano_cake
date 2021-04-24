@@ -52,13 +52,13 @@
                 <p><%= order_detail.product.name %></p>
               </td>
               <td>
-                <p><%= order_detail.product.price %></p>
+                <p><%= order_detail.product.tax_included_price.floor %></p>
               </td>
               <td>
                 <p><%= order_detail.product_quantity %></p>
               </td>
               <td>
-                <p><%= order_detail.product.price * order_detail.product_quantity %></p>
+                <p><%= order_detail.product.tax_included_price.floor * order_detail.product_quantity %></p>
               </td>
             </tr>
           <% end %>
