@@ -1,5 +1,7 @@
 class Public::AddressesController < ApplicationController
 
+  before_action :authenticate_customer!
+
   def index
     @address = Address.new
     @addresses = Address.all
@@ -31,7 +33,7 @@ class Public::AddressesController < ApplicationController
   private
 
   def address_params
-    params.require(:address).permit(:postcode, :destination, :delivery_name)
+    params.require(:address).permit(:postcode, :destination, :delivery_name).merge(customer_id: current_customer.id)
   end
 
 end

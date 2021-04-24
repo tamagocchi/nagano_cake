@@ -1,5 +1,7 @@
 class Admin::ProductsController < ApplicationController
 
+  before_action :authenticate_admin!
+
   def index
     @products = Product.all
   end
@@ -11,7 +13,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.save
-    redirect_to admin_products_path
+    redirect_to admin_product_path(@product.id)
 
   end
 
