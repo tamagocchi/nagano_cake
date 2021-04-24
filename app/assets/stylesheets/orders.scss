@@ -1,3 +1,25 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+
+header {
+    background: #333333;
+    color: #ffffff;
+    height: 40px;
+}
+
+main {
+    background: #ffffff;
+    flex: 1;
+}
+
+footer {
+    background: #333333;
+    color: #ffffff;
+}

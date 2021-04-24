@@ -86,6 +86,10 @@ footer img{
   color: gray;
 }
 
+li {
+  list-style: none;
+}
+
 .new_btn_color {
   color: pink;
   &:hover {
