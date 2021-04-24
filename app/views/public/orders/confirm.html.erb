@@ -25,13 +25,13 @@
               <p><%= cart.product.name %></p>
             </td>
             <td>
-              <p><%= cart.product.price %></p>
+              <p><%= cart.product.tax_included_price.floor %></p>
             </td>
             <td>
               <p><%= cart.product_quantity %></p>
             </td>
             <td>
-              <p><%= cart.product.price * cart.product_quantity %></p>
+              <p><%= cart.product.tax_included_price.floor * cart.product_quantity %></p>
             </td>
           </tr>
        <% end %>

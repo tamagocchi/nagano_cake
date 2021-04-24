@@ -9,4 +9,8 @@ class Order < ApplicationRecord
     self.postcode + self.destination + self.delivery_name
    end
 
+    def tax_included_price
+     tax_rate = 1.08
+     price * tax_rate
+    end
 end

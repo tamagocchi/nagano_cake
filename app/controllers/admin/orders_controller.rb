@@ -6,7 +6,7 @@ class Admin::OrdersController < ApplicationController
 
     @sub_total = 0
     @order.order_details.each do |order_detail|
-    @sub_total += order_detail.product.price * order_detail.product_quantity
+    @sub_total += order_detail.product.tax_included_price.floor * order_detail.product_quantity
     end
   end
 

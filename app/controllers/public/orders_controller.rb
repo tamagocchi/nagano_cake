@@ -26,7 +26,7 @@ class Public::OrdersController < ApplicationController
     @sub_total = 0
 
     @cart_products.each do |cart|
-    @sub_total += cart.product.price * cart.product_quantity
+    @sub_total += cart.product.tax_included_price.floor * cart.product_quantity
     end
 
     @order = Order.new
