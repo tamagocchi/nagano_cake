@@ -32,7 +32,11 @@
           </tr>
           <tr>
             <td><p>販売ステータス</p></td>
-            <td><%= @product.is_active_to_string %></td>
+            <% if @product.is_active == true %>
+              <td class="active_color"><%= @product.is_active_to_string %></td>
+            <% else %>
+              <td class="inactive_color"><%= @product.is_active_to_string %></td>
+            <% end %>
           </tr>
         </tbody>
       </table>

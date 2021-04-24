@@ -18,9 +18,13 @@
             <td><%= customer.email %></td>
             <td>
               <% if customer.is_deleted == false %>
+              <p class="active_color">
                 有効
+              </p>
               <% else %>
+              <p class="inactive_color">
                 退会
+              </p>
               <% end %>
             </td>
             </tr>

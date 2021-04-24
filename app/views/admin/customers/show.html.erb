@@ -41,11 +41,11 @@
           <th>会員ステータス</th>
           <td>
             <% if @customer.is_deleted == false %>
-              <span class="label label-primary">
+              <span class="active_color label label-primary">
                 有効会員
               </span>
             <% else %>
-              <span class="label label-danger">
+              <span class="inactive_color label label-danger">
                 退会済み
               </span>
             <% end %>
