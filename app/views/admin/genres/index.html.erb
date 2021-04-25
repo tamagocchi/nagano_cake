@@ -10,9 +10,9 @@
   <div class="row">
     <div class="form-inline pl-5">
       <%= form_with model: [:admin, @genre], remote: true do |f| %>
-        <div class="form-group col-md-12" id="genre-form">
+        <div class="form-group col-md-12">
           <p class="ml-8">ジャンル名</p>
-          <%= f.text_field :name, placeholder: "ジャンル", size: "30", class: "form-control ml-5 mt-5 mb-5" %>
+          <%= f.text_field :name, placeholder: "ジャンル", size: "30", class: "form-control ml-5 mt-5 mb-5", id: "genre-form" %>
           <%= f.submit '新規登録', class:"btn btn-sm btn-success ml-5" %>
         </div>
       <% end %>
