@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-md-6 offset-md-1">
-      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">注⽂履歴詳細</h5>
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5 mb-4">注⽂履歴詳細</h5>
     </div>
   </div>
 
@@ -49,13 +49,13 @@
               <p><%= order_detail.product.name %></p>
             </td>
             <td>
-              <p><%= order_detail.product.price %></p>
+              <p><%= order_detail.product.tax_included_price.floor %></p>
             </td>
             <td>
               <p><%= order_detail.product_quantity %></p>
             </td>
             <td>
-              <p><%= order_detail.product.price * order_detail.product_quantity %></p>
+              <p><%= order_detail.product.tax_included_price.floor * order_detail.product_quantity %></p>
             </td>
               <td>
                   <%= form_with(model: order_detail, url: admin_order_order_detail_path(order_detail.id), method: :patch, local: true) do |f| %>

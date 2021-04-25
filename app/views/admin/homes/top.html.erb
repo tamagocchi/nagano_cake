@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-md-6 offset-md-1">
-      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">注⽂履歴一覧</h5>
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5 mb-4">注⽂履歴一覧</h5>
     </div>
   </div>
 
@@ -21,7 +21,7 @@
        <% @orders.each do |order| %>
           <tbody>
               <tr>
-                <td><%= order.created_at.to_s(:slash_and_time) %></td>
+                <td><u><a href="/admin/orders/<%= order.customer.id %>"><%= order.created_at.to_s(:slash_and_time) %></a></u></td>
                 <td><%= order.customer.last_name + order.customer.first_name %></td>
 
                  <td>

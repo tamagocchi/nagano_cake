@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-md-6 offset-md-1">
-      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">注⽂情報確認</h5>
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5 mb-4">注⽂情報確認</h5>
     </div>
   </div>
 
@@ -25,13 +25,13 @@
               <p><%= cart.product.name %></p>
             </td>
             <td>
-              <p><%= cart.product.price %></p>
+              <p><%= cart.product.tax_included_price.floor %></p>
             </td>
             <td>
               <p><%= cart.product_quantity %></p>
             </td>
             <td>
-              <p><%= cart.product.price * cart.product_quantity %></p>
+              <p><%= cart.product.tax_included_price.floor * cart.product_quantity %></p>
             </td>
           </tr>
        <% end %>
