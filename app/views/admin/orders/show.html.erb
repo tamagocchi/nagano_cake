@@ -11,7 +11,7 @@
    <div class="col-xs-9">
      <table class="table table-borderless">
          <thead>
-            <tr><th>購入者</th><td><%= @order.delivery_name %></td></tr>
+            <tr><th>購入者</th><td><%= @customer.last_name + @customer.first_name %></td></tr>
             <tr><th>注文日</th><td><%= @order.created_at.to_s(:slash) %></td></tr>
             <tr><th>配送先</th><td>〒<%= @order.postcode %><%= @order.destination %><%= @order.delivery_name %></td></tr>
             <tr><th>支払方法</th><td><%= @order.payment_method %></td></tr>
