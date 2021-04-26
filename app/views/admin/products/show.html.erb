@@ -1,0 +1,51 @@
+  <!----------- 管理者：商品詳細画面------------->
+<div class="container ml-0">
+
+  <div class="row">
+    <div class="col-md-6 offset-md-2">
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5 mb-2">商品詳細</h5>
+    </div>
+  </div>
+
+  <div class="row mt-5 offset-md-2">
+    <div class="col-md-3 text-center">
+      <%= attachment_image_tag @product, :image, :fill, 200, 200, format: 'jpeg' %>
+    </div>
+    <div class="col-md-8 ml-5">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><p>商品名</p></td>
+            <td><%= @product.name %></td>
+          </tr>
+          <tr>
+            <td><p>商品説明</p></td>
+            <td><%= @product.introduction %></td>
+          </tr>
+          <tr>
+            <td><p>ジャンル</p></td>
+            <td><%= Genre.find(@product.genre_id).name %></td>
+          </tr>
+          <tr>
+            <td><p>税込価格</br>(税抜価格)</td>
+            <td><p><%= @product.tax_included_price.floor %>（<%= @product.price %>）円</p></td>
+          </tr>
+          <tr>
+            <td><p>販売ステータス</p></td>
+            <% if @product.is_active == true %>
+              <td class="active_color"><%= @product.is_active_to_string %></td>
+            <% else %>
+              <td class="inactive_color"><%= @product.is_active_to_string %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mt-3 text-center offset-md-4">
+      <%= link_to '編集', edit_admin_product_path(@product.id), class: 'btn btn-sm btn-success' %>
+    </div>
+  </div>
+</div>

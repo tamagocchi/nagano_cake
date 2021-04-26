@@ -1,0 +1,50 @@
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6 offset-md-1">
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5">注⽂履歴⼀覧</h5>
+    </div>
+  </div>
+
+  <table class="table table-bordered">
+      <thead class="thead-light">
+          <tr>
+             <th>注文日</th>
+             <th>配送先</th>
+             <th>注文商品</th>
+             <th>支払金額</th>
+             <th>ステータス</th>
+             <th>注文詳細</th>
+          </tr>
+      </thead>
+   <% @order_products.each do |order| %>
+      <tbody>
+          <tr>
+            <td><%= order.created_at.to_s(:slash) %></td>
+
+            <td>〒<%= order.postcode %><br>
+               <%= order.destination %><br>
+               <%= order.delivery_name %></td>
+
+            <td>
+              <% order.order_details.each do |order_detail| %>
+                <li><%= order_detail.product.name %></li>
+              <% end %>
+            </td>
+
+
+            <td><% @total_price = 0 %>
+                <% order.order_details.each do |order_detail| %>
+                  <% @total_price += order_detail.product.price %>
+                <% end %>
+                <%= @total_price %></td>
+
+
+            <td><%= order.order_status %></td>
+            <td><%= link_to '表示する', order_path(order.id), class: 'glyphicon glyphicon-home btn btn-primary' %></td>
+          </tr>
+      </tbody>
+   <% end %>
+  </table>
+</div>

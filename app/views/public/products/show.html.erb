@@ -1,0 +1,37 @@
+  <!----------- 顧客：商品詳細画面------------->
+
+<div class="container ml-0">
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5 mb-2">商品詳細</h5>
+    </div>
+  </div>
+
+  <div class="row mt-8 offset-md-3 mt-3">
+    <div class="col-md-3 text-center">
+       <%= attachment_image_tag @product, :image, :fill, 200, 200, format: 'jpeg' %>
+    </div>
+    <div class="col-md-5 ml-5">
+      <h2><%= @product.name %></h2>
+      <p><%= @product.introduction %></p>
+      <div class="mt-5 mb-3 d-flex">
+        <h4 class="mb-0">￥<%= @product.tax_included_price.floor %></h4>
+        <p class="mb-0 pl-2 pt-1">(税込)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 text-center offset-md-5">
+     <%= form_with model: @add_cart, local: true do |f| %>
+       <%= f.select :product_quantity, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]], include_blank: "個数選択" %>
+       <%= f.submit 'カートに入れる', class:"btn btn-sm btn-success ml-5" %>
+       <%= f.hidden_field :product_id, :value => @product.id %>
+       <% if customer_signed_in? %>
+         <%= f.hidden_field :customer_id, :value => current_customer.id %>
+       <% end %>
+     <% end %>
+    </div>
+  </div>
+</div>

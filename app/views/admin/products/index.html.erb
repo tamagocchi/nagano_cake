@@ -1,0 +1,46 @@
+  <!----------- 管理者：商品一覧画面------------->
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6 offset-md-1">
+      <h5 class="d-inline-flex bg-light px-3 py-1 font-weight-bold mt-5 mb-4">商品一覧</h5>
+    </div>
+    <div class="col-md-2 offset-md-3">
+      <%= link_to "", new_admin_product_path, class:"fas fa-plus-circle fa-3x new_btn_color" %>
+    </div>
+  </div>
+
+ <div class="row">
+  <div class="col-md-11 pl-5">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th class="text-left">商品ID</th>
+          <th class="text-left">商品名</th>
+          <th class="text-left">税込価格</th>
+          <th class="text-left">ジャンル</th>
+          <th class="text-left">ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.id %></td>
+          <td><u><%= link_to product.name, admin_product_path(product.id), class:"text-dark" %></u></td>
+          <td><%= product.tax_included_price.floor %></td>
+          <td><%= product.genre.name %></td>
+          <% if product.is_active == true %>
+            <td class="active_color"><%= product.is_active_to_string %></td>
+          <% else %>
+            <td class="inactive_color"><%= product.is_active_to_string %></td>
+          <% end %>
+        </tr>
+      <% end %>
+     </tbody>
+    </table>
+  </div>
+ </div>
+
+</div>
